@@ -17,10 +17,16 @@ app.use(requestContext);
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// Serve CSS, JavaScript and other static files
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Student routes
-app.use('/', studentRoutes);
+app.get('/', (req, res) => {
+  res.redirect('/students');
+});
+
+app.use('/students', studentRoutes);
 
 // Error handling (must be last)
 app.use(errorHandler);
