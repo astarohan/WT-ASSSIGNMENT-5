@@ -1,0 +1,15 @@
+<%- include('../partials/header', { title, requestId }) %>
+<section class="profile-head">
+  <p class="eyebrow">STUDENT PROFILE</p>
+  <h1><%= student.name %><span>.</span></h1>
+  <p>Record ID: <strong><%= student.id %></strong></p>
+  <% if (created) { %><div class="alert success">Student record created successfully. HTTP 201 · Created.</div><% } %>
+</section>
+<section class="profile-grid">
+  <div class="profile-item"><small>PRN</small><strong><%= student.prn %></strong></div>
+  <div class="profile-item"><small>EMAIL</small><strong><%= student.email %></strong></div>
+  <div class="profile-item"><small>MOBILE</small><strong><%= student.mobile %></strong></div>
+  <div class="profile-item"><small>COURSE</small><strong><%= student.course %></strong></div>
+</section>
+<a class="back-link" href="/students">← Back to directory</a>
+<%- include('../partials/footer', { requestId }) %>

@@ -1,0 +1,35 @@
+<%- include('../partials/header', { title, requestId }) %>
+<section class="hero">
+  <div>
+    <p class="eyebrow">STUDENT INFORMATION PORTAL</p>
+    <h1>Student directory<span>.</span></h1>
+    <p class="hero-copy">A simple, validated directory for student records and academic information.</p>
+  </div>
+  <div class="stat-card">
+    <span class="stat-label">REGISTERED RECORDS</span>
+    <strong><%= students.length %></strong>
+    <span class="stat-foot">In-memory demo dataset</span>
+  </div>
+</section>
+<section class="section-head">
+  <div><p class="eyebrow">DIRECTORY</p><h2>All students</h2></div>
+  <a class="button primary" href="/students/new">Add new student <b>＋</b></a>
+</section>
+<div class="table-wrap">
+<table>
+<thead><tr><th>STUDENT</th><th>PRN</th><th>COURSE</th><th>CONTACT</th><th></th></tr></thead>
+<tbody>
+<% students.forEach(student => { %>
+<tr>
+  <td><strong><%= student.name %></strong><small><%= student.email %></small></td>
+  <td><%= student.prn %></td>
+  <td><span class="tag"><%= student.course %></span></td>
+  <td><%= student.mobile %></td>
+  <td><a class="view-link" href="/students/<%= student.id %>">View →</a></td>
+</tr>
+<% }) %>
+</tbody>
+</table>
+</div>
+<p class="hint">Choose a student to view their profile. Demo records are kept in memory and reset when the server restarts.</p>
+<%- include('../partials/footer', { requestId }) %>
