@@ -1,9 +1,11 @@
 <%- include('./header', { title, requestId }) %>
+
 <section class="error-panel">
   <span class="error-code"><%= status %></span>
   <p class="eyebrow">REQUEST COULD NOT BE COMPLETED</p>
   <h1><%= title %><span>.</span></h1>
   <p><%= message %></p>
-  <a class="button primary" href="/students">Return to directory</a>
+  <a class="button primary" href="/">Return to directory</a>
 </section>
-<%- include('../partials/footer', { requestId }) %>
+
+<%- include('./footer', { requestId }) %>
