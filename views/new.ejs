@@ -1,38 +1,115 @@
-<%- include('../partials/header', { title, requestId }) %>
+<%- include('./header', { title, requestId }) %>
+
 <section class="form-layout">
   <div class="form-intro">
     <p class="eyebrow">NEW RECORD</p>
     <h1>Bring a new student<br>on board<span>.</span></h1>
-    <p>Enter student details below. Express validates every field on the server before adding the record to the directory.</p>
+    <p>
+      Enter student details below. Express validates every field on the
+      server before adding the record to the directory.
+    </p>
+
     <div class="trust-list">
       <span>✓ Server-side checks</span>
       <span>✓ Duplicate PRN and email checks</span>
       <span>✓ Clear validation feedback</span>
     </div>
   </div>
+
   <section class="form-card">
-    <div class="card-title"><div><p class="eyebrow">STUDENT DETAILS</p><h2>Registration form</h2></div><span class="counter">01 / 01</span></div>
-    <% if (errors.length) { %>
-      <div class="alert error"><strong>Please review the following:</strong><ul>
-        <% errors.forEach(error => { %><li><%= error %></li><% }) %>
-      </ul></div>
-    <% } %>
-    <form method="POST" action="/students" class="student-form">
-      <label>Full name<input name="name" value="<%= values.name || '' %>" placeholder="e.g. Rohan Reshi" required></label>
-      <label>Email address<input name="email" type="email" value="<%= values.email || '' %>" placeholder="student@example.com" required></label>
-      <div class="two-col">
-        <label>PRN (12 digits)<input name="prn" value="<%= values.prn || '' %>" maxlength="12" placeholder="202401040034" required></label>
-        <label>Mobile number<input name="mobile" value="<%= values.mobile || '' %>" maxlength="10" placeholder="9876543210" required></label>
+    <div class="card-title">
+      <div>
+        <p class="eyebrow">STUDENT DETAILS</p>
+        <h2>Registration form</h2>
       </div>
-      <label>Course<select name="course" required>
-        <option value="">Choose course</option>
-        <% ['B.Tech','M.Tech','BCA','MCA'].forEach(course => { %>
-          <option value="<%= course %>" <%= values.course === course ? 'selected' : '' %>><%= course %></option>
-        <% }) %>
-      </select></label>
-      <button class="button primary wide" type="submit">Validate and save record <b>→</b></button>
+      <span class="counter">01 / 01</span>
+    </div>
+
+    <% if (errors.length) { %>
+      <div class="alert error">
+        <strong>Please review the following:</strong>
+        <ul>
+          <% errors.forEach(error => { %>
+            <li><%= error %></li>
+          <% }) %>
+        </ul>
+      </div>
+    <% } %>
+
+    <form method="POST" action="/students" class="student-form">
+
+      <label>
+        Full name
+        <input
+          name="name"
+          value="<%= values.name || '' %>"
+          placeholder="e.g. Rohan Reshi"
+          required
+        >
+      </label>
+
+      <label>
+        Email address
+        <input
+          name="email"
+          type="email"
+          value="<%= values.email || '' %>"
+          placeholder="student@example.com"
+          required
+        >
+      </label>
+
+      <div class="two-col">
+        <label>
+          PRN (12 digits)
+          <input
+            name="prn"
+            value="<%= values.prn || '' %>"
+            maxlength="12"
+            placeholder="202401040034"
+            required
+          >
+        </label>
+
+        <label>
+          Mobile number
+          <input
+            name="mobile"
+            value="<%= values.mobile || '' %>"
+            maxlength="10"
+            placeholder="9876543210"
+            required
+          >
+        </label>
+      </div>
+
+      <label>
+        Course
+        <select name="course" required>
+          <option value="">Choose course</option>
+
+          <% ['B.Tech', 'M.Tech', 'BCA', 'MCA'].forEach(course => { %>
+            <option
+              value="<%= course %>"
+              <%= values.course === course ? 'selected' : '' %>
+            >
+              <%= course %>
+            </option>
+          <% }) %>
+        </select>
+      </label>
+
+      <button class="button primary wide" type="submit">
+        Validate and save record <b>→</b>
+      </button>
+
     </form>
-    <p class="form-note">All fields are checked on the server. Invalid form submissions return HTTP 422.</p>
+
+    <p class="form-note">
+      All fields are checked on the server. Invalid form submissions
+      return HTTP 422.
+    </p>
   </section>
 </section>
-<%- include('../partials/footer', { requestId }) %>
+
+<%- include('./footer', { requestId }) %>
