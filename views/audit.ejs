@@ -1,9 +1,20 @@
-<%- include('../partials/header', { title: 'Audit Access', requestId }) %>
+<%- include('./header', { title: 'Audit Access', requestId }) %>
+
 <section class="error-panel">
   <span class="success-mark">✓</span>
+
   <p class="eyebrow">CUSTOM AUTH MIDDLEWARE</p>
+
   <h1>Access granted<span>.</span></h1>
-  <p>The x-demo-role: faculty header passed the demonstration middleware check.</p>
-  <a class="button primary" href="/students">Return to directory</a>
+
+  <p>
+    The x-demo-role: faculty header passed the demonstration
+    middleware check.
+  </p>
+
+  <a class="button primary" href="/students">
+    Return to directory
+  </a>
 </section>
-<%- include('../partials/footer', { requestId }) %>
+
+<%- include('./footer', { requestId }) %>
